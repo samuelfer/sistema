@@ -6,7 +6,7 @@
  * Time: 08:20
  */
 
-namespace sindicoamigo\V1\Rest\AreaComum;
+namespace SindicoAmigo\V1\Rest\Areacomum;
 
 
 use Zend\Db\TableGateway\TableGatewayInterface;

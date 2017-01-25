@@ -1,5 +1,5 @@
 <?php
-namespace sindicoamigo\V1\Rest\AreaComum;
+namespace SindicoAmigo\V1\Rest\Areacomum;
 
 /**
  *
@@ -8,7 +8,7 @@ namespace sindicoamigo\V1\Rest\AreaComum;
  * Classe principal é a representacao da tabela do banco de dados
  */
 
-class AreaComumEntity
+class AreacomumEntity
 {
     protected $id_cadastro_reserva_area_comum;
     protected $id_area_pai;
