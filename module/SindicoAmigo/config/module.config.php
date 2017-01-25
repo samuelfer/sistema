@@ -500,7 +500,7 @@ return [
     'service_manager' => [
         'factories' => [
             \SindicoAmigo\V1\Rest\Areacomum\AreacomumResource::class => \SindicoAmigo\V1\Rest\Areacomum\AreacomumResourceFactory::class,
-            'SindicoAmigo\\V1\\Rest\\Areacomum\\AreacomumRepository' => \SindicoAmigo\V1\Rest\Areacomum\AreacomumRepositoryFactory::class,
+            \SindicoAmigo\V1\Rest\Areacomum\AreacomumRepository::class => \SindicoAmigo\V1\Rest\Areacomum\AreacomumRepositoryFactory::class,
             \SindicoAmigo\V1\Rest\Configuracao\ConfiguracaoResource::class => \SindicoAmigo\V1\Rest\Configuracao\ConfiguracaoResourceFactory::class,
             'SindicoAmigo\\V1\\Rest\\Configuracao\\ConfiguracaoRepository' => \SindicoAmigo\V1\Rest\Configuracao\ConfiguracaoRepositoryFactory::class,
         ],

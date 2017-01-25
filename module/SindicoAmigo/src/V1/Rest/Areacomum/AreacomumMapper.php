@@ -6,7 +6,7 @@
  * Time: 07:58
  */
 
-namespace sindicoamigo\V1\Rest\AreaComum;
+namespace SindicoAmigo\V1\Rest\Areacomum;
 
 
 use Zend\Hydrator\HydratorInterface;
