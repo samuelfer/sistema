@@ -26,4 +26,5 @@ return [
     'ZF\\Versioning',
     'Application',
     'SindicoAmigo',
+    'CodeOrders',
 ];

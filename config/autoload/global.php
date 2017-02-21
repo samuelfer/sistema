@@ -6,6 +6,23 @@ return [
     'db' => [
         'adapters' => [
             'DbAdapter' => [],
+            'DbAdapterCode' => [],
+        ],
+    ],
+    'router' => [
+        'routes' => [
+            'oauth' => [
+                'options' => [
+                    'spec' => '%oauth%',
+                    'regex' => '(?P<oauth>(/oauthSindico|/oauth))',
+                ],
+                'type' => 'regex',
+            ],
+        ],
+    ],
+    'zf-mvc-auth' => [
+        'authentication' => [
+            'map' => [],
         ],
     ],
 ];

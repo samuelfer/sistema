@@ -6,7 +6,7 @@
  * Time: 07:58
  */
 
-namespace sindicoamigo\V1\Rest\AreaComum;
+namespace SindicoAmigo\V1\Rest\Areacomum;
 
 
 use Zend\Hydrator\HydratorInterface;
@@ -17,7 +17,7 @@ use Zend\Hydrator\HydratorInterface;
  * Classe responsavel por transformar array em objeto e objeto em array
  */
 
-class AreacomumMapper extends AreaComumEntity implements  HydratorInterface {
+class AreacomumMapper extends AreacomumEntity implements  HydratorInterface {
 
     /**
      * Extract values from an object

@@ -6,88 +6,35 @@
  * Time: 08:27
  */
 
-namespace sindicoamigo\V1\Rest\AreaComum;
+namespace SindicoAmigo\V1\Rest\Areacomum;
 
-use Zend\Db\ResultSet\HydratingResultSet;
 use Interop\Container\ContainerInterface;
-use Interop\Container\Exception\ContainerException;
-use Zend\ServiceManager\Exception\ServiceNotCreatedException;
-use Zend\ServiceManager\Exception\ServiceNotFoundException;
-use Zend\ServiceManager\Factory\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+//use Zend\Db\ResultSet\HydratingResultSet;
+//use Zend\Db\TableGateway\TableGateway;
+//use Zend\Hydrator\ClassMethods;
 
 
-class AreacomumRepositoryFactory implements FactoryInterface
+class AreacomumRepositoryFactory
 {
-
-
     /**
-     * @param ServiceLocatorInterface $serviceLocator
      * @return AreacomumRepository
      */
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    //public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container)
     {
 
-        $dbAdapter = $serviceLocator->get('DbAdapter');
-        $areacomumMapper = new AreacomumMapper();
-        $hydrator = new HydratingResultSet($areacomumMapper, new AreaComumEntity());
+        //$dbAdapter = $container->get('DbAdapter');
+        //$areacomumMapper = new AreacomumMapper();
+        //$hydrator = new HydratingResultSet($areacomumMapper, new AreacomumEntity());
+        //PODE SER ASSIM TAMBEM
+        //$hydrator = new HydratingResultSet(new ClassMethods(), new AreacomumEntity());
 
-        $tableGateway = new TableGateway('area_comum', $dbAdapter, null, $hydrator);
+        //$tableGateway = new TableGateway('area_comum', $dbAdapter, null, $hydrator);
+        
+        $tableGateway = $container->get(\SindicoAmigo\V1\Rest\Areacomum\AreacomumTableGateway::class);
 
         $areacomumRepository = new AreacomumRepository($tableGateway);
 
         return $areacomumRepository;
-    }
-    /**
-     * Create an object
-     *
-     * @param  ContainerInterface $container
-     * @param  string $requestedName
-     * @param  null|array $options
-     * @return object
-     * @throws ServiceNotFoundException if unable to resolve the service.
-     * @throws ServiceNotCreatedException if an exception is raised when
-     *     creating a service.
-     * @throws ContainerException if any other error occurs
-     *
-     * public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
-     * {
-     * $dbAdapter = $container->get('DbAdapter');
-     * $areacomumMapper = new AreacomumMapper();
-     * $hydrator = new HydratingResultSet($areacomumMapper, new AreaComumEntity());
-     *
-     * $tableGateway = new TableGateway('area_comum', $dbAdapter, null, $hydrator);
-     *
-     * $areacomumRepository = new areacomumRepository($tableGateway);
-     *
-     * return $areacomumRepository;
-     * } */
-    /**
-     * Create an object
-     *
-     * @param  ContainerInterface $container
-     * @param  string $requestedName
-     * @param  null|array $options
-     * @return object
-     * @throws ServiceNotFoundException if unable to resolve the service.
-     * @throws ServiceNotCreatedException if an exception is raised when
-     *     creating a service.
-     * @throws ContainerException if any other error occurs
-     */
-    /**
-     * Create an object
-     *
-     * @param  ContainerInterface $container
-     * @param  string $requestedName
-     * @param  null|array $options
-     * @return object
-     * @throws ServiceNotFoundException if unable to resolve the service.
-     * @throws ServiceNotCreatedException if an exception is raised when
-     *     creating a service.
-     * @throws ContainerException if any other error occurs
-     */
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
-    {
-        // TODO: Implement __invoke() method.
     }
 }

@@ -1,6 +1,7 @@
 <?php
 namespace SindicoAmigo\V1\Rest\Areacomum;
 
+use Zend\Hydrator\ObjectProperty;
 use ZF\ApiProblem\ApiProblem;
 use ZF\Rest\AbstractResourceListener;
 
@@ -27,7 +28,15 @@ class AreacomumResource extends AbstractResourceListener
 
     public function create($data)
     {
-        return new ApiProblem(405, 'The POST method has not been defined');
+        $hydrator = new ObjectProperty();
+        $dataArea = $hydrator->extract($data);
+        $result = $this->repository->create($dataArea);
+        //print_r($dataArea);die;
+        //Se der algum erro retorna a mensagem
+        if($result == "error"){
+            return new ApiProblem(500, 'Error ao tentar cadastrar!');
+        }
+        return $result;
     }
 
     /**
@@ -38,12 +47,17 @@ class AreacomumResource extends AbstractResourceListener
      */
     public function delete($id)
     {
-        return new ApiProblem(405, 'The DELETE method has not been defined for individual resources');
+        //$userRole = $this->repository->findByUsername($this->getIdentity()->getRoleId());
+        //if($userRole!="admin")
+        //{
+           // return new ApiProblem(403, 'You are not an admin. Your are an :'.$userRole);
+        //}
+        //print_r($id);die;
+        return $this ->repository->delete($id);
     }
 
     /**
      * Delete a collection, or members of a collection
-     *
      * @param  mixed $data
      * @return ApiProblem|mixed
      */
@@ -55,12 +69,13 @@ class AreacomumResource extends AbstractResourceListener
     /**
      * Fetch a resource
      *
-     * @param  mixed $id
+     * @param  mixed $id_cadastro_reserva_area_comum
      * @return ApiProblem|mixed
      */
-    public function fetch($id)
+    public function fetch($id_cadastro_reserva_area_comum)
     {
-        return new ApiProblem(405, 'The GET method has not been defined for individual resources');
+        return $this->repository->find($id_cadastro_reserva_area_comum);
+        
     }
 
     /**
@@ -72,7 +87,6 @@ class AreacomumResource extends AbstractResourceListener
     public function fetchAll($params = [])
     {
         return $this->repository->findAll();
-        //return new ApiProblem(405, 'The POST method has not been defined');
     }
 
     /**
@@ -84,7 +98,12 @@ class AreacomumResource extends AbstractResourceListener
      */
     public function patch($id, $data)
     {
-        return new ApiProblem(405, 'The PATCH method has not been defined for individual resources');
+        $result =  $this->repository->patch($id, $data);
+        
+         if($result=="error"){
+            return new ApiProblem(500, 'Error');
+        }
+        return $result;
     }
 
     /**
@@ -106,7 +125,7 @@ class AreacomumResource extends AbstractResourceListener
      */
     public function replaceList($data)
     {
-        return new ApiProblem(405, 'The PUT method has not been defined for collections');
+        
     }
 
     /**
@@ -118,6 +137,11 @@ class AreacomumResource extends AbstractResourceListener
      */
     public function update($id, $data)
     {
-        return new ApiProblem(405, 'The PUT method has not been defined for individual resources');
+       $result = $this->repository->update($id, $data);
+        
+        if($result=="error"){
+            return new ApiProblem(500, 'Error');
+        }
+        return $result;
     }
 }
